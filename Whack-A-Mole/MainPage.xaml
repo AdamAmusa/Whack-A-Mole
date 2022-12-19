@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Whack_A_Mole.MainPage"
+             BackgroundImageSource="backgroundimage.png">
+
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label HorizontalOptions="CenterAndExpand" FontSize="50"  Text="WhackAMole" FontFamily="MyFont"/>
+        <StackLayout Orientation="Horizontal" >
+            <Label FontSize="Medium" Text="Points: "/>
+            <Label x:Name="LblPoint" HorizontalTextAlignment="Start" Text="0" FontSize="Medium"/>
+            <!-- Will display points collected from clicking moles -->
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="End">  <!--  Heart UI which will display at the top right-->
+            <Image  x:Name="Heart1" Source="heart.png"  HeightRequest="50" WidthRequest="50"/>
+            <Image  x:Name="Heart2" Source="heart.png" HeightRequest="50" WidthRequest="50"/>
+            <Image  x:Name="Heart3" Source="heart.png" HeightRequest="50" WidthRequest="50"/>
+        </StackLayout>
+        <Grid x:Name="FullGrid">
+            <Grid x:Name="Grid3x3" VerticalOptions="Center" HorizontalOptions="Center"  Background="Orange" HeightRequest="300" WidthRequest="300"> <!--Three by three grid-->
+
+                <!-- Number of grids and rows-->
+                <Grid.RowDefinitions >
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <BoxView HeightRequest="100" WidthRequest="100" 
+            CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="0" Grid.Column="1"
+                 HorizontalOptions="Center" VerticalOptions="Center" />
+                <!-- Holes in which the Mole will appear-->
+                <BoxView HeightRequest="100" WidthRequest="100"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="0" Grid.Column="2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="100" WidthRequest="100"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="0" Grid.Column="0"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="100" WidthRequest="100"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="1" Grid.Column="0"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="100" WidthRequest="100"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="1" Grid.Column="1"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="100" WidthRequest="100"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="1" Grid.Column="2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="100" WidthRequest="100"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="2" Grid.Column="0"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="100" WidthRequest="100"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="2" Grid.Column="1"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="100" WidthRequest="100"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="2" Grid.Column="2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <ImageButton x:Name="Mole" Source="moleimage.png" HeightRequest="90" WidthRequest="90" Clicked="Moleclicked_Clicked"></ImageButton> <!---Mole image which the user can click to add points for the user-->
+
+            </Grid>
+
+            <Grid x:Name="Grid4x4" VerticalOptions="Center" IsVisible="False" HorizontalOptions="CenterAndExpand"  Background="Orange" HeightRequest="360" WidthRequest="360"> <!--Four by four grid-->
+
+                <Grid.RowDefinitions >
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <BoxView HeightRequest="90" WidthRequest="90"
+            CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="0" Grid.Column="0"
+                 HorizontalOptions="Center" VerticalOptions="Center" />
+                <!-- Holes in which the Mole will appear-->
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="0" Grid.Column="1"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="0" Grid.Column="2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="0" Grid.Column="3"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="1" Grid.Column="0"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="1" Grid.Column="1"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="1" Grid.Column="2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="1" Grid.Column="3"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="2" Grid.Column="0"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="2" Grid.Column="1"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="2" Grid.Column="2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="2" Grid.Column="3"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="3" Grid.Column="0"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="3" Grid.Column="1"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="3" Grid.Column="2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="90" WidthRequest="90"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="3" Grid.Column="3"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <ImageButton x:Name="Mole2" Source="moleimage.png" HeightRequest="90" WidthRequest="90" Clicked="Moleclicked_Clicked"></ImageButton>
+                <!---Mole image which the user can click to add points for the user-->
+
+            </Grid>
+            <Grid x:Name="Grid5x5" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="False"  Background="Orange" HeightRequest="350" WidthRequest="350"> <!--Four by four grid-->
+
+                <Grid.RowDefinitions >
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+
+
+                </Grid.ColumnDefinitions>
+                <BoxView HeightRequest="70" WidthRequest="70"
+            CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="0" Grid.Column="0"
+                 HorizontalOptions="Center" VerticalOptions="Center" />
+                <!-- Holes in which the Mole will appear-->
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="0" Grid.Column="1"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="0" Grid.Column="2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="0" Grid.Column="3"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="0" Grid.Column="4"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="1" Grid.Column="0"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="1" Grid.Column="1"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="1" Grid.Column="2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="1" Grid.Column="3"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="1" Grid.Column="4"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="2" Grid.Column="0"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="2" Grid.Column="1"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="2" Grid.Column="2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="2" Grid.Column="3"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="2" Grid.Column="4"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="3" Grid.Column="0"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="3" Grid.Column="1"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="3" Grid.Column="2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="3" Grid.Column="3"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="3" Grid.Column="4"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="4" Grid.Column="0"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="4" Grid.Column="1"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="4" Grid.Column="2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="4" Grid.Column="3"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+                <BoxView HeightRequest="70" WidthRequest="70"
+                     CornerRadius="100"
+                 Color="SaddleBrown" Grid.Row="4" Grid.Column="4"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                </BoxView>
+
+                <ImageButton x:Name="Mole3" Source="moleimage.png" HeightRequest="90" WidthRequest="60" Clicked="Moleclicked_Clicked"></ImageButton>
+
+            </Grid>
+
+        </Grid>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" x:Name="Menu">
+            <Button x:Name="NewGame" Clicked="NewGame_Clicked" Text="New Game"></Button> <!--Button which will start a new game-->
+            <Button x:Name="NewLayout4x4" Clicked="NewLayout4x4_Clicked" Text="4x4"></Button> <!--Button to change the layout of the game to "4x4"-->
+            <Button x:Name="NewLayout5x5" Clicked="NewLayout5x5_Clicked" Text="5x5"></Button>
+            <!--Button to change the layout of the game to "5x5"-->
+            <Button x:Name="NewLayout3x3" Clicked="NewLayout3x3_Clicked" Text="3x3"></Button>
+            <!--Button to change the layout of the game to "3x3"-->
+
+        </StackLayout>
+
+    </StackLayout>
+
+
+
+
+
+</ContentPage>
